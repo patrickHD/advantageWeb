@@ -23,8 +23,8 @@
             alert("Request is taking a long time. Consider running the request again");
         }
         if (count == 300) {
-            alert("Request is taking a long time. Consider running the request again");
+            alert("Request is taking a very long time. Consider running the request again");
         }
     }
-    checker = setInterval(checkStatus, 5000)
+    checker = setInterval(checkStatus, 2500)
 });
