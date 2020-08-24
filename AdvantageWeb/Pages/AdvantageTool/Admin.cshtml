@@ -1,0 +1,22 @@
+﻿@page "{handler?}"
+@model AdvantageWeb.Pages.AdvantageTool.AdminModel
+@{
+    ViewData["Title"] = "Admin";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Admin</h1>
+<h3>Running Tasks</h3>
+<ul>
+    @foreach (var dataTask in Data.IndexModel.DataTasks)
+    {
+        <li>
+            <p>TaskID @dataTask.Key</p>
+            <p>Elapsed Time: @(DateTime.Now - dataTask.Value.StartTime)</p>
+            <p>Error?: @(dataTask.Value.Task.Exception == null ? "None" : dataTask.Value.Task.Exception.Message)</p>
+
+            <a href="AdvantageTool/Admin/StopTask?id=@dataTask.Key">Stop Task</a>
+
+        </li>
+    }
+</ul>

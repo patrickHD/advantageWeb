@@ -1,0 +1,126 @@
+﻿@page "{handler?}"
+@model AdvantageWeb.Pages.Data.IndexModel
+@{
+    ViewData["Title"] = "Query Tool";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<script src="~/js/tool.js"></script>
+
+<style>
+    input[type="checkbox"] {
+        width: 20%;
+        height: 2rem;
+        box-shadow: 0 0 1px 1px;
+    }
+
+    #columnSelectsDiv {
+        display: none;
+        flex-wrap: wrap;
+    }
+
+    .col-val {
+        display: flex;
+        flex-wrap: wrap;
+        width: 25%;
+        min-width: fit-content;
+        max-width: 25%;
+    }
+
+        .col-val input[type="checkbox"] {
+            margin: 0 10px;
+            width: 100%;
+            min-width: 1rem;
+        }
+
+        .col-val label {
+            margin: auto;
+        }
+
+    #fieldSearch {
+        margin: 0 5px;
+        min-width: 50%;
+        display: none;
+    }
+
+    #columnsToggleDiv {
+        display: inline-flex;
+        width: 100%
+    }
+
+    .hide-div {
+        display: none;
+    }
+    #filterseldiv {
+        border: solid;
+        padding: 1rem;
+        border-radius: 15px;
+    }
+</style>
+<h1>Query Tool</h1>
+
+
+<form asp-page-handler="AdvantageData" method="GET">
+    @Html.EditorForModel()
+    <p>⬆ At least one geo option must be selected</p>
+    <input type="hidden" name="Columns" id="Columns_input" />
+    <br />
+    <div style="display: block">
+        <div id="columnsToggleDiv">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-info active">
+                    <input type="radio" data-name="fieldstoggle" value="fieldsall" id="fieldsall" autocomplete="off" checked> Fields: All
+                </label>
+                <label class="btn btn-info">
+                    <input type="radio" data-name="fieldstoggle" value="fieldsselect" id="fieldsselect" autocomplete="off"> Fields: Select
+                </label>
+            </div>
+            <input type="text" id="fieldSearch" class="form-text" placeholder="Seach for field" />
+        </div>
+    </div>
+    <div class="editor-field" id="columnSelectsDiv">
+        @foreach (var x in typeof(AdvantageAPISVC.MediaOrder).GetProperties())
+        {
+            <div class="col-val columndiv" id="0_@x.Name.ToLower()">
+                <label>@x.Name</label>
+                <input id="columninput_@x.Name" class="columninput" type="checkbox" value="@x.Name" />
+            </div>
+        }
+    </div>
+    <br />
+    @*<div style="display: block">
+        <div id="FiltersToggleDiv">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-info active">
+                    <input type="radio" data-name="filterstoggle" value="nofilters" id="nofilters" autocomplete="off" checked> Filters: Off
+                </label>
+                <label class="btn btn-info">
+                    <input type="radio" data-name="filterstoggle" value="yesfilters" id="yesfilters" autocomplete="off"> Filters: On
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div id="filterseldiv">
+        <label>Filters</label>
+        <br />
+        <div class="filter-group">
+            <select class="filter-sel">
+                @foreach (var x in typeof(AdvantageAPISVC.MediaOrder).GetProperties())
+                {
+                    <option value="@x.Name">@x.Name</option>
+                }
+            </select>
+            <input placeholder="Enter text" />
+            <button type="button" class="btn btn-success">+</button>
+            <button type="button" class="btn btn-success">+ Or Group</button>
+            <button type="button" class="btn btn-success">+ Not Group</button>
+        </div>
+    </div>
+    <br />*@
+    <button class="btn btn-dark">Download</button>
+</form>
+
+<div id="inps" style="display:none">
+    @Html.EditorFor(i => i.MediaOrder)
+</div>
+<div id="mo"></div>
