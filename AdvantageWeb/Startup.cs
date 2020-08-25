@@ -34,7 +34,7 @@ namespace AdvantageWeb
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                options.MinimumSameSitePolicy = SameSiteMode.Lax;
+                options.MinimumSameSitePolicy = SameSiteMode.Unspecified;
                 options.OnAppendCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
                 options.OnDeleteCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
             });
@@ -49,7 +49,7 @@ namespace AdvantageWeb
             services.AddAuthentication().AddGoogle(options =>
             {
                 options.CallbackPath = "/";
-                options.CorrelationCookie.SameSite = SameSiteMode.None;
+                options.CorrelationCookie.SameSite = SameSiteMode.Lax;
                 options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                 options.SaveTokens = true;
                 IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
@@ -65,7 +65,7 @@ namespace AdvantageWeb
                 var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
                 if (DisallowsSameSiteNone(userAgent))
                 {
-                    options.SameSite = SameSiteMode.Strict;
+                    options.SameSite = SameSiteMode.Lax;
                 }
             }
         }
