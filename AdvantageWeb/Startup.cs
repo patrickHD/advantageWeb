@@ -48,7 +48,7 @@ namespace AdvantageWeb
             });
             services.AddAuthentication().AddGoogle(options =>
             {
-                options.CallbackPath = "/";
+                options.CallbackPath = "/signin-google";
                 options.CorrelationCookie.SameSite = SameSiteMode.Lax;
                 options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                 options.SaveTokens = true;
