@@ -15,24 +15,24 @@ namespace AdvantageWeb.Controlers
     [Route("API/[controller]/[action]")]
     public class VendorsController : ControllerBase
     {
-        private readonly staticdbContext _tmdb;
+        private readonly StaticdbContext _tmdb;
         private readonly IConfiguration _configuration;
         private readonly string ServerName;
         private readonly string DatabaseName;
-        private readonly string DatabaseNameCA;
+        //private readonly string DatabaseNameCA;
         private readonly string UserName;
         private readonly string Password;
-        private readonly IWebHostEnvironment _env;
+        //private readonly IWebHostEnvironment _env;
         private static APIServiceClient Client;
 
-        public VendorsController(staticdbContext TMDB, IConfiguration configuration, IWebHostEnvironment env)
+        public VendorsController(StaticdbContext TMDB, IConfiguration configuration/*, IWebHostEnvironment env*/)
         {
             _tmdb = TMDB;
-            _env = env;
+            //_env = env;
             _configuration = configuration;
             ServerName = _configuration["ServerName"];
             DatabaseName = _configuration["DatabaseName"];
-            DatabaseNameCA = _configuration["DatabaseNameCA"];
+            //DatabaseNameCA = _configuration["DatabaseNameCA"];
             UserName = _configuration["UserNameADV"];
             Password = _configuration["Password"];
             Client = new APIServiceClient();

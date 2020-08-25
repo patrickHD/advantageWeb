@@ -4,11 +4,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace AdvantageWeb.Models
 {
-    public partial class staticdbContext : DbContext
+    public partial class StaticdbContext : DbContext
     {
         private readonly IConfiguration _configuration;
 
-        public staticdbContext(DbContextOptions<staticdbContext> options, IConfiguration configuration)
+        public StaticdbContext(DbContextOptions<StaticdbContext> options, IConfiguration configuration)
             : base(options)
         {
             _configuration = configuration;

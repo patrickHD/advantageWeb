@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.CookiePolicy;
 using AdvantageWeb.Models;
+using AdvantageWeb.Classes;
 
 namespace AdvantageWeb
 {
@@ -26,18 +27,22 @@ namespace AdvantageWeb
         {
             Configuration = configuration;
         }
-
-        public List<string> allowedDomains = new List<string>() { "coegipartners.com", "radar-analytics.com", "coegiweb.com" };
         public IConfiguration Configuration { get; }
         public UserManager<IdentityUser> UserManager;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.MinimumSameSitePolicy = SameSiteMode.Unspecified;
+                options.OnAppendCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
+                options.OnDeleteCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
+            });
+
             services.AddDbContext<ApplicationDbContext>(options =>options.UseNpgsql(Configuration["AppConnection"]));
-            services.AddDbContext<staticdbContext>(options => options.UseNpgsql(Configuration["TMConnection"]));
+            services.AddDbContext<StaticdbContext>(options => options.UseNpgsql(Configuration["TMConnection"]));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<ApplicationDbContext>();
-            UserManager = services.BuildServiceProvider().CreateScope().ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
             services.AddRazorPages().AddRazorPagesOptions(options =>
             {
                 options.Conventions.AuthorizeFolder("/AdvantageTool");
@@ -48,19 +53,61 @@ namespace AdvantageWeb
                 options.ClientId = googleAuthNSection["ClientId"];
                 options.ClientSecret = googleAuthNSection["ClientSecret"];
             });
+        }
 
-            services.Configure<CookiePolicyOptions>(options =>
+        private void CheckSameSite(HttpContext httpContext, CookieOptions options)
+        {
+            if (options.SameSite == SameSiteMode.None)
             {
-                options.MinimumSameSitePolicy = SameSiteMode.Strict;
-                options.OnAppendCookie = cookieContext =>
+                var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
+                if (DisallowsSameSiteNone(userAgent))
                 {
-                    if (cookieContext.CookieOptions.SameSite == SameSiteMode.None)
-                    {
-                        var userAgent = cookieContext.Context.Request.Headers["User-Agent"].ToString();
-                    }
-                };
-            });
+                    options.SameSite = SameSiteMode.Unspecified;
+                }
+            }
+        }
 
+        public static bool DisallowsSameSiteNone(string userAgent)
+        {
+            // Check if a null or empty string has been passed in, since this
+            // will cause further interrogation of the useragent to fail.
+            if (String.IsNullOrWhiteSpace(userAgent))
+                return false;
+
+            // Cover all iOS based browsers here. This includes:
+            // - Safari on iOS 12 for iPhone, iPod Touch, iPad
+            // - WkWebview on iOS 12 for iPhone, iPod Touch, iPad
+            // - Chrome on iOS 12 for iPhone, iPod Touch, iPad
+            // All of which are broken by SameSite=None, because they use the iOS networking
+            // stack.
+            if (userAgent.Contains("CPU iPhone OS 12") ||
+                userAgent.Contains("iPad; CPU OS 12"))
+            {
+                return true;
+            }
+
+            // Cover Mac OS X based browsers that use the Mac OS networking stack. 
+            // This includes:
+            // - Safari on Mac OS X.
+            // This does not include:
+            // - Chrome on Mac OS X
+            // Because they do not use the Mac OS networking stack.
+            if (userAgent.Contains("Macintosh; Intel Mac OS X 10_14") &&
+                userAgent.Contains("Version/") && userAgent.Contains("Safari"))
+            {
+                return true;
+            }
+
+            // Cover Chrome 50-69, because some versions are broken by SameSite=None, 
+            // and none in this range require it.
+            // Note: this covers some pre-Chromium Edge versions, 
+            // but pre-Chromium Edge does not require SameSite=None.
+            if (userAgent.Contains("Chrome/5") || userAgent.Contains("Chrome/6"))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,7 +130,11 @@ namespace AdvantageWeb
             app.UseAuthentication();
             app.UseRouting();
             app.UseAuthorization();
-
+            //app.Use((context, next) =>
+            //{
+            //    context.Request.Scheme = "https";
+            //    return next();
+            //});
             app.UseStaticFiles(new StaticFileOptions()
             {
                 OnPrepareResponse = (context) =>
@@ -95,22 +146,7 @@ namespace AdvantageWeb
                     }
                 }
             });
-            app.Use(async (context, next) =>
-            {
-                _ = context;
-                if (context.User.Identity.IsAuthenticated)
-                {
-                    if (!allowedDomains.Contains(context.User.Identity.Name.Split('@')[1]))
-                    {
-                        var user = context.User;
-                        //var userManager = context.RequestServices.GetService(UserManager<IdentityUser>);
-                        await context.SignOutAsync(IdentityConstants.ApplicationScheme);
-                        await UserManager.DeleteAsync(await UserManager.GetUserAsync(user));
-                        await context.Response.WriteAsync("Unauthorized. Domain is not allowed. Refresh to go home.");
-                    }
-                }
-                await next();
-            });
+            app.UseMiddleware<BlockExternalUsers>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();

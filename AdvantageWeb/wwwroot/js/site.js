@@ -4,6 +4,6 @@
 // Write your Javascript code.
 
 $(() => {
-    $('#account').remove();
-    $('#registerForm').remove();
+    //$('#account').remove();
+    //$('#registerForm').remove();
 });
