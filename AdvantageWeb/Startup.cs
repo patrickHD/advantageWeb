@@ -33,20 +33,20 @@ namespace AdvantageWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.Configure<CookiePolicyOptions>(options =>
-            //{
-            //    options.MinimumSameSitePolicy = SameSiteMode.;
-            //    options.OnAppendCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
-            //    options.OnDeleteCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
-            //});
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("CorsPolicy",
-            //        builder => builder
-            //        .AllowAnyMethod()
-            //        .AllowAnyHeader()
-            //        .AllowCredentials());
-            //});
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.OnAppendCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
+                options.OnDeleteCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
+            });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
             services.AddDbContext<ApplicationDbContext>(options =>options.UseNpgsql(Configuration["AppConnection"]));
             services.AddDbContext<StaticdbContext>(options => options.UseNpgsql(Configuration["TMConnection"]));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<ApplicationDbContext>();
@@ -56,6 +56,7 @@ namespace AdvantageWeb
             });
             services.AddAuthentication().AddGoogle(options =>
             {
+                //options.AuthorizationEndpoint = "/signin-google";
                 options.CorrelationCookie.SameSite = SameSiteMode.None;
                 options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                 IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
@@ -64,60 +65,60 @@ namespace AdvantageWeb
             });
         }
 
-        //private void CheckSameSite(HttpContext httpContext, CookieOptions options)
-        //{
-        //    if (options.SameSite == SameSiteMode.None)
-        //    {
-        //        var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
-        //        if (DisallowsSameSiteNone(userAgent))
-        //        {
-        //            options.SameSite = SameSiteMode.Unspecified;
-        //        }
-        //    }
-        //}
+        private void CheckSameSite(HttpContext httpContext, CookieOptions options)
+        {
+            if (options.SameSite == SameSiteMode.None)
+            {
+                var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
+                if (DisallowsSameSiteNone(userAgent))
+                {
+                    options.SameSite = SameSiteMode.Unspecified;
+                }
+            }
+        }
 
-        //public static bool DisallowsSameSiteNone(string userAgent)
-        //{
-        //    // Check if a null or empty string has been passed in, since this
-        //    // will cause further interrogation of the useragent to fail.
-        //    if (String.IsNullOrWhiteSpace(userAgent))
-        //        return false;
+        public static bool DisallowsSameSiteNone(string userAgent)
+        {
+            // Check if a null or empty string has been passed in, since this
+            // will cause further interrogation of the useragent to fail.
+            if (String.IsNullOrWhiteSpace(userAgent))
+                return false;
 
-        //    // Cover all iOS based browsers here. This includes:
-        //    // - Safari on iOS 12 for iPhone, iPod Touch, iPad
-        //    // - WkWebview on iOS 12 for iPhone, iPod Touch, iPad
-        //    // - Chrome on iOS 12 for iPhone, iPod Touch, iPad
-        //    // All of which are broken by SameSite=None, because they use the iOS networking
-        //    // stack.
-        //    if (userAgent.Contains("CPU iPhone OS 12") ||
-        //        userAgent.Contains("iPad; CPU OS 12"))
-        //    {
-        //        return true;
-        //    }
+            // Cover all iOS based browsers here. This includes:
+            // - Safari on iOS 12 for iPhone, iPod Touch, iPad
+            // - WkWebview on iOS 12 for iPhone, iPod Touch, iPad
+            // - Chrome on iOS 12 for iPhone, iPod Touch, iPad
+            // All of which are broken by SameSite=None, because they use the iOS networking
+            // stack.
+            if (userAgent.Contains("CPU iPhone OS 12") ||
+                userAgent.Contains("iPad; CPU OS 12"))
+            {
+                return true;
+            }
 
-        //    // Cover Mac OS X based browsers that use the Mac OS networking stack. 
-        //    // This includes:
-        //    // - Safari on Mac OS X.
-        //    // This does not include:
-        //    // - Chrome on Mac OS X
-        //    // Because they do not use the Mac OS networking stack.
-        //    if (userAgent.Contains("Macintosh; Intel Mac OS X 10_14") &&
-        //        userAgent.Contains("Version/") && userAgent.Contains("Safari"))
-        //    {
-        //        return true;
-        //    }
+            // Cover Mac OS X based browsers that use the Mac OS networking stack. 
+            // This includes:
+            // - Safari on Mac OS X.
+            // This does not include:
+            // - Chrome on Mac OS X
+            // Because they do not use the Mac OS networking stack.
+            if (userAgent.Contains("Macintosh; Intel Mac OS X 10_14") &&
+                userAgent.Contains("Version/") && userAgent.Contains("Safari"))
+            {
+                return true;
+            }
 
-        //    // Cover Chrome 50-69, because some versions are broken by SameSite=None, 
-        //    // and none in this range require it.
-        //    // Note: this covers some pre-Chromium Edge versions, 
-        //    // but pre-Chromium Edge does not require SameSite=None.
-        //    if (userAgent.Contains("Chrome/5") || userAgent.Contains("Chrome/6"))
-        //    {
-        //        return true;
-        //    }
+            // Cover Chrome 50-69, because some versions are broken by SameSite=None, 
+            // and none in this range require it.
+            // Note: this covers some pre-Chromium Edge versions, 
+            // but pre-Chromium Edge does not require SameSite=None.
+            if (userAgent.Contains("Chrome/5") || userAgent.Contains("Chrome/6"))
+            {
+                return true;
+            }
 
-        //    return false;
-        //}
+            return false;
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
