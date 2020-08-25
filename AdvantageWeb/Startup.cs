@@ -28,7 +28,6 @@ namespace AdvantageWeb
             Configuration = configuration;
         }
         public IConfiguration Configuration { get; }
-        public UserManager<IdentityUser> UserManager;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -49,8 +48,10 @@ namespace AdvantageWeb
             });
             services.AddAuthentication().AddGoogle(options =>
             {
-                options.CorrelationCookie.SameSite = SameSiteMode.Strict;
-                options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.Always;
+                options.CallbackPath = "/";
+                options.CorrelationCookie.SameSite = SameSiteMode.None;
+                options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                options.SaveTokens = true;
                 IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
                 options.ClientId = googleAuthNSection["ClientId"];
                 options.ClientSecret = googleAuthNSection["ClientSecret"];
@@ -132,11 +133,6 @@ namespace AdvantageWeb
             app.UseAuthentication();
             app.UseRouting();
             app.UseAuthorization();
-            //app.Use((context, next) =>
-            //{
-            //    context.Request.Scheme = "https";
-            //    return next();
-            //});
             app.UseStaticFiles(new StaticFileOptions()
             {
                 OnPrepareResponse = (context) =>
