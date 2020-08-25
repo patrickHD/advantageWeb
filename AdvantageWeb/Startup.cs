@@ -35,7 +35,7 @@ namespace AdvantageWeb
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                options.MinimumSameSitePolicy = SameSiteMode.Unspecified;
+                options.MinimumSameSitePolicy = SameSiteMode.Lax;
                 options.OnAppendCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
                 options.OnDeleteCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
             });
@@ -64,7 +64,7 @@ namespace AdvantageWeb
                 var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
                 if (DisallowsSameSiteNone(userAgent))
                 {
-                    options.SameSite = SameSiteMode.Unspecified;
+                    options.SameSite = SameSiteMode.Strict;
                 }
             }
         }
