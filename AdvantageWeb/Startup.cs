@@ -49,6 +49,8 @@ namespace AdvantageWeb
             });
             services.AddAuthentication().AddGoogle(options =>
             {
+                options.CorrelationCookie.SameSite = SameSiteMode.Strict;
+                options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.Always;
                 IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
                 options.ClientId = googleAuthNSection["ClientId"];
                 options.ClientSecret = googleAuthNSection["ClientSecret"];
