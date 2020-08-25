@@ -45,7 +45,7 @@ namespace AdvantageWeb.Models
                 entity.ToTable("auth_group");
 
                 entity.HasIndex(e => e.Name)
-                    .HasName("auth_group_name_a6ea08ec_like")
+                    .HasDatabaseName("auth_group_name_a6ea08ec_like")
                     .HasOperators(new[] { "varchar_pattern_ops" });
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -61,13 +61,13 @@ namespace AdvantageWeb.Models
                 entity.ToTable("auth_group_permissions");
 
                 entity.HasIndex(e => e.GroupId)
-                    .HasName("auth_group_permissions_group_id_b120cbf9");
+                    .HasDatabaseName("auth_group_permissions_group_id_b120cbf9");
 
                 entity.HasIndex(e => e.PermissionId)
-                    .HasName("auth_group_permissions_permission_id_84c5c92e");
+                    .HasDatabaseName("auth_group_permissions_permission_id_84c5c92e");
 
                 entity.HasIndex(e => new { e.GroupId, e.PermissionId })
-                    .HasName("auth_group_permissions_group_id_permission_id_0cd325b0_uniq")
+                    .HasDatabaseName("auth_group_permissions_group_id_permission_id_0cd325b0_uniq")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -94,10 +94,10 @@ namespace AdvantageWeb.Models
                 entity.ToTable("auth_permission");
 
                 entity.HasIndex(e => e.ContentTypeId)
-                    .HasName("auth_permission_content_type_id_2f476e4b");
+                    .HasDatabaseName("auth_permission_content_type_id_2f476e4b");
 
                 entity.HasIndex(e => new { e.ContentTypeId, e.Codename })
-                    .HasName("auth_permission_content_type_id_codename_01ab375a_uniq")
+                    .HasDatabaseName("auth_permission_content_type_id_codename_01ab375a_uniq")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -126,7 +126,7 @@ namespace AdvantageWeb.Models
                 entity.ToTable("auth_user");
 
                 entity.HasIndex(e => e.Username)
-                    .HasName("auth_user_username_6821ab7c_like")
+                    .HasDatabaseName("auth_user_username_6821ab7c_like")
                     .HasOperators(new[] { "varchar_pattern_ops" });
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -176,13 +176,13 @@ namespace AdvantageWeb.Models
                 entity.ToTable("auth_user_groups");
 
                 entity.HasIndex(e => e.GroupId)
-                    .HasName("auth_user_groups_group_id_97559544");
+                    .HasDatabaseName("auth_user_groups_group_id_97559544");
 
                 entity.HasIndex(e => e.UserId)
-                    .HasName("auth_user_groups_user_id_6a12ed8b");
+                    .HasDatabaseName("auth_user_groups_user_id_6a12ed8b");
 
                 entity.HasIndex(e => new { e.UserId, e.GroupId })
-                    .HasName("auth_user_groups_user_id_group_id_94350c0c_uniq")
+                    .HasDatabaseName("auth_user_groups_user_id_group_id_94350c0c_uniq")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -209,13 +209,13 @@ namespace AdvantageWeb.Models
                 entity.ToTable("auth_user_user_permissions");
 
                 entity.HasIndex(e => e.PermissionId)
-                    .HasName("auth_user_user_permissions_permission_id_1fbb5f2c");
+                    .HasDatabaseName("auth_user_user_permissions_permission_id_1fbb5f2c");
 
                 entity.HasIndex(e => e.UserId)
-                    .HasName("auth_user_user_permissions_user_id_a95ead1b");
+                    .HasDatabaseName("auth_user_user_permissions_user_id_a95ead1b");
 
                 entity.HasIndex(e => new { e.UserId, e.PermissionId })
-                    .HasName("auth_user_user_permissions_user_id_permission_id_14a6b632_uniq")
+                    .HasDatabaseName("auth_user_user_permissions_user_id_permission_id_14a6b632_uniq")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -242,10 +242,10 @@ namespace AdvantageWeb.Models
                 entity.ToTable("django_admin_log");
 
                 entity.HasIndex(e => e.ContentTypeId)
-                    .HasName("django_admin_log_content_type_id_c4bce8eb");
+                    .HasDatabaseName("django_admin_log_content_type_id_c4bce8eb");
 
                 entity.HasIndex(e => e.UserId)
-                    .HasName("django_admin_log_user_id_c564eba6");
+                    .HasDatabaseName("django_admin_log_user_id_c564eba6");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -287,7 +287,7 @@ namespace AdvantageWeb.Models
                 entity.ToTable("django_content_type");
 
                 entity.HasIndex(e => new { e.AppLabel, e.Model })
-                    .HasName("django_content_type_app_label_model_76bd3d3b_uniq")
+                    .HasDatabaseName("django_content_type_app_label_model_76bd3d3b_uniq")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -332,10 +332,10 @@ namespace AdvantageWeb.Models
                 entity.ToTable("django_session");
 
                 entity.HasIndex(e => e.ExpireDate)
-                    .HasName("django_session_expire_date_a5c62663");
+                    .HasDatabaseName("django_session_expire_date_a5c62663");
 
                 entity.HasIndex(e => e.SessionKey)
-                    .HasName("django_session_session_key_c0390e0f_like")
+                    .HasDatabaseName("django_session_session_key_c0390e0f_like")
                     .HasOperators(new[] { "varchar_pattern_ops" });
 
                 entity.Property(e => e.SessionKey)
@@ -359,7 +359,7 @@ namespace AdvantageWeb.Models
                 entity.ToTable("pacing_client");
 
                 entity.HasIndex(e => e.Client)
-                    .HasName("pacing_client_client_bf94f004_like")
+                    .HasDatabaseName("pacing_client_client_bf94f004_like")
                     .HasOperators(new[] { "varchar_pattern_ops" });
 
                 entity.Property(e => e.Client)
@@ -372,7 +372,7 @@ namespace AdvantageWeb.Models
                 entity.ToTable("pacing_clientdivisionproduct");
 
                 entity.HasIndex(e => e.Client)
-                    .HasName("pacing_clientdivisionproduct_client_10fad1b1_like")
+                    .HasDatabaseName("pacing_clientdivisionproduct_client_10fad1b1_like")
                     .HasOperators(new[] { "varchar_pattern_ops" });
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -416,11 +416,11 @@ namespace AdvantageWeb.Models
                 entity.ToTable("pacing_entry");
 
                 entity.HasIndex(e => e.Client)
-                    .HasName("pacing_entry_client_2b1f8683_like")
+                    .HasDatabaseName("pacing_entry_client_2b1f8683_like")
                     .HasOperators(new[] { "varchar_pattern_ops" });
 
                 entity.HasIndex(e => e.UserId)
-                    .HasName("pacing_entry_user_id_a578d101");
+                    .HasDatabaseName("pacing_entry_user_id_a578d101");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -824,7 +824,7 @@ namespace AdvantageWeb.Models
                 entity.ToTable("pacing_vendor");
 
                 entity.HasIndex(e => e.Vendor)
-                    .HasName("pacing_vendor_vendor_eb69b3c4_like")
+                    .HasDatabaseName("pacing_vendor_vendor_eb69b3c4_like")
                     .HasOperators(new[] { "varchar_pattern_ops" });
 
                 entity.Property(e => e.Vendor)
