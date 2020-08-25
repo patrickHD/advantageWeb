@@ -57,6 +57,7 @@ namespace AdvantageWeb
             services.AddAuthentication().AddGoogle(options =>
             {
                 //options.AuthorizationEndpoint = "/signin-google";
+                options.CallbackPath = "/signin-google";
                 options.CorrelationCookie.SameSite = SameSiteMode.None;
                 options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                 IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
