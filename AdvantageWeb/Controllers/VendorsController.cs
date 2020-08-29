@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AdvantageAPISVC;
 using AdvantageWeb.Models;
+using F23.StringSimilarity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -39,11 +41,26 @@ namespace AdvantageWeb.Controlers
         }
         public async Task<string> Update()
         {
-            var staticVendors = _tmdb.PacingVendor.ToList().Select(i => i.Vendor);
-            var sDate = DateTime.Now.AddDays(-1);
+            var l = new NormalizedLevenshtein();
+            var staticVendors = _tmdb.PacingVendor.ToList().Select(i => i.Vendor).OrderBy(o=>o).ToList();
+            var sDate = DateTime.Now.AddDays(-30);
             var eDate = DateTime.Now;
-            var advVendors = (await Client.LoadMediaOrdersAsync(ServerName, DatabaseName, 0, UserName, Password, "A", sDate, sDate.Month, sDate.Year, eDate, eDate.Month, eDate.Year, true, true, true, true, true, true, "")).Select(i => i.VendorName).Distinct();
-            var res = advVendors.Except(staticVendors).OrderBy(o=>o);
+            var advVendors = (await Client.LoadMediaOrdersAsync(ServerName, DatabaseName, 0, UserName, Password, "A", sDate, sDate.Month, sDate.Year, eDate, eDate.Month, eDate.Year, true, false, false, false, false, false, "")).Select(i => i.VendorName).Distinct();
+            var same = advVendors.Intersect(staticVendors).OrderBy(o => o).ToList();
+            var res = advVendors.Where(s => !staticVendors.Any(e => 
+            {
+                var ts = s.Replace(".com", "").Split("/")[0].ToLower();
+                var te = e.Replace(".com", "").Split("/")[0].ToLower();
+                return l.Distance(ts, te) < 0.4 || ts.Contains(te) || te.Contains(ts);
+            })).OrderBy(o=>o).ToList();
+            var res2 = staticVendors.Where(s => res.Any(e =>
+            {
+                var ts = s.Replace(".com", "").Split("/")[0].ToLower();
+                var te = e.Replace(".com", "").Split("/")[0].ToLower();
+                return l.Distance(ts, te) < 0.4 || ts.Contains(te) || te.Contains(ts);
+            })).OrderBy(o => o).ToList();
+            var ao = string.Join("\n", res);
+            var to = string.Join("\n", res2);
             return string.Join('\n', res);
         }
 
