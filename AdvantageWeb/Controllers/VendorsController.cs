@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using AdvantageAPISVC;
 using AdvantageWeb.Models;
@@ -53,6 +54,32 @@ namespace AdvantageWeb.Controlers
                 return l.Distance(ts, te) < 0.2 || ts.Contains(te) || te.Contains(ts);
             })).OrderBy(o=>o).ToList();
             return "Span: Week\n" + string.Join('\n', res);
+        }
+
+        public async Task<string> Compare(float val)
+        {
+            var l = new NGram();
+            var sv = _tmdb.PacingVendor.ToList().Select(i => i.Vendor).OrderBy(o => o).ToList();
+            var sDate = DateTime.Now.AddMonths(0).AddYears(-5);
+            var eDate = DateTime.Now;
+            var advVendors = (await Client.LoadMediaOrdersAsync(ServerName, DatabaseName, 0, UserName, Password, "A", sDate, sDate.Month, sDate.Year, eDate, eDate.Month, eDate.Year, true, false, false, false, false, false, "")).Select(i => i.VendorName).Distinct().OrderBy(o=>o).ToList();
+            var res = new List<string>();
+            foreach(var a in sv)
+            {
+                var wb = "";
+                var s = 2.0;
+                foreach (var b in advVendors)
+                {
+                    var ns = l.Distance(a.Replace(".com", "").Split("/")[0].ToLower(), b.Replace(".com", "").Split("/")[0].ToLower());
+                    if(ns < s && ns < val)
+                    {
+                        s = ns;
+                        wb = b;
+                    }
+                }
+                res.Add($"\"{a}\",\"{wb}\"\n");
+            }
+            return string.Join(null, res);
         }
 
         public string Test()
