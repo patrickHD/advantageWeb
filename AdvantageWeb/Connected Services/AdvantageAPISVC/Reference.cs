@@ -974,6 +974,58 @@ namespace AdvantageAPISVC
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SalesClassAPIResponse", Namespace="http://schemas.datacontract.org/2004/07/AdvantageAPI")]
+    public partial class SalesClassAPIResponse : object
+    {
+        
+        private bool IsSuccessfulField;
+        
+        private string MessageField;
+        
+        private AdvantageAPISVC.SalesClass[] ResultsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsSuccessful
+        {
+            get
+            {
+                return this.IsSuccessfulField;
+            }
+            set
+            {
+                this.IsSuccessfulField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message
+        {
+            get
+            {
+                return this.MessageField;
+            }
+            set
+            {
+                this.MessageField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AdvantageAPISVC.SalesClass[] Results
+        {
+            get
+            {
+                return this.ResultsField;
+            }
+            set
+            {
+                this.ResultsField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AccountExecutive", Namespace="http://schemas.datacontract.org/2004/07/AdvantageAPI")]
     public partial class AccountExecutive : object
     {
@@ -1246,6 +1298,8 @@ namespace AdvantageAPISVC
     public partial class MediaOrder : object
     {
         
+        private System.Nullable<int> ActualImpressionsField;
+        
         private string AdNumberField;
         
         private string AdSizeField;
@@ -1337,6 +1391,10 @@ namespace AdvantageAPISVC
         private string FiscalPeriodCodeField;
         
         private System.Nullable<short> FridayField;
+        
+        private System.Nullable<decimal> GRPField;
+        
+        private System.Nullable<decimal> GrossImpressionsField;
         
         private System.Nullable<int> GuaranteedImpressionsField;
         
@@ -1533,6 +1591,19 @@ namespace AdvantageAPISVC
         private System.Nullable<decimal> Week7AmountField;
         
         private System.Nullable<int> Week7ImpressionsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ActualImpressions
+        {
+            get
+            {
+                return this.ActualImpressionsField;
+            }
+            set
+            {
+                this.ActualImpressionsField = value;
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string AdNumber
@@ -2129,6 +2200,32 @@ namespace AdvantageAPISVC
             set
             {
                 this.FridayField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> GRP
+        {
+            get
+            {
+                return this.GRPField;
+            }
+            set
+            {
+                this.GRPField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> GrossImpressions
+        {
+            get
+            {
+                return this.GrossImpressionsField;
+            }
+            set
+            {
+                this.GrossImpressionsField = value;
             }
         }
         
@@ -3610,6 +3707,58 @@ namespace AdvantageAPISVC
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CampaignAPIResponse", Namespace="http://schemas.datacontract.org/2004/07/AdvantageAPI")]
+    public partial class CampaignAPIResponse : object
+    {
+        
+        private bool IsSuccessfulField;
+        
+        private string MessageField;
+        
+        private AdvantageAPISVC.Campaign[] ResultsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsSuccessful
+        {
+            get
+            {
+                return this.IsSuccessfulField;
+            }
+            set
+            {
+                this.IsSuccessfulField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message
+        {
+            get
+            {
+                return this.MessageField;
+            }
+            set
+            {
+                this.MessageField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AdvantageAPISVC.Campaign[] Results
+        {
+            get
+            {
+                return this.ResultsField;
+            }
+            set
+            {
+                this.ResultsField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
     [System.Runtime.Serialization.DataContractAttribute(Name="VendorTerm", Namespace="http://schemas.datacontract.org/2004/07/AdvantageAPI")]
     public partial class VendorTerm : object
     {
@@ -4460,6 +4609,58 @@ namespace AdvantageAPISVC
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ClientAPIResponse", Namespace="http://schemas.datacontract.org/2004/07/AdvantageAPI")]
+    public partial class ClientAPIResponse : object
+    {
+        
+        private bool IsSuccessfulField;
+        
+        private string MessageField;
+        
+        private AdvantageAPISVC.Client[] ResultsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsSuccessful
+        {
+            get
+            {
+                return this.IsSuccessfulField;
+            }
+            set
+            {
+                this.IsSuccessfulField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message
+        {
+            get
+            {
+                return this.MessageField;
+            }
+            set
+            {
+                this.MessageField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AdvantageAPISVC.Client[] Results
+        {
+            get
+            {
+                return this.ResultsField;
+            }
+            set
+            {
+                this.ResultsField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Division", Namespace="http://schemas.datacontract.org/2004/07/AdvantageAPI")]
     public partial class Division : object
     {
@@ -4731,6 +4932,58 @@ namespace AdvantageAPISVC
             set
             {
                 this.ZipField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DivisionAPIResponse", Namespace="http://schemas.datacontract.org/2004/07/AdvantageAPI")]
+    public partial class DivisionAPIResponse : object
+    {
+        
+        private bool IsSuccessfulField;
+        
+        private string MessageField;
+        
+        private AdvantageAPISVC.Division[] ResultsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsSuccessful
+        {
+            get
+            {
+                return this.IsSuccessfulField;
+            }
+            set
+            {
+                this.IsSuccessfulField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message
+        {
+            get
+            {
+                return this.MessageField;
+            }
+            set
+            {
+                this.MessageField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AdvantageAPISVC.Division[] Results
+        {
+            get
+            {
+                return this.ResultsField;
+            }
+            set
+            {
+                this.ResultsField = value;
             }
         }
     }
@@ -5158,6 +5411,58 @@ namespace AdvantageAPISVC
             set
             {
                 this.StatementZipField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductAPIResponse", Namespace="http://schemas.datacontract.org/2004/07/AdvantageAPI")]
+    public partial class ProductAPIResponse : object
+    {
+        
+        private bool IsSuccessfulField;
+        
+        private string MessageField;
+        
+        private AdvantageAPISVC.Product[] ResultsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsSuccessful
+        {
+            get
+            {
+                return this.IsSuccessfulField;
+            }
+            set
+            {
+                this.IsSuccessfulField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message
+        {
+            get
+            {
+                return this.MessageField;
+            }
+            set
+            {
+                this.MessageField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AdvantageAPISVC.Product[] Results
+        {
+            get
+            {
+                return this.ResultsField;
+            }
+            set
+            {
+                this.ResultsField = value;
             }
         }
     }
@@ -5730,6 +6035,725 @@ namespace AdvantageAPISVC
             set
             {
                 this.TaxIDField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<short> VCCStatus
+        {
+            get
+            {
+                return this.VCCStatusField;
+            }
+            set
+            {
+                this.VCCStatusField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VendorCategory
+        {
+            get
+            {
+                return this.VendorCategoryField;
+            }
+            set
+            {
+                this.VendorCategoryField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VendorTermCode
+        {
+            get
+            {
+                return this.VendorTermCodeField;
+            }
+            set
+            {
+                this.VendorTermCodeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Website
+        {
+            get
+            {
+                return this.WebsiteField;
+            }
+            set
+            {
+                this.WebsiteField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ZipCode
+        {
+            get
+            {
+                return this.ZipCodeField;
+            }
+            set
+            {
+                this.ZipCodeField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="VendorAPIResponse", Namespace="http://schemas.datacontract.org/2004/07/AdvantageAPI")]
+    public partial class VendorAPIResponse : object
+    {
+        
+        private bool IsSuccessfulField;
+        
+        private string MessageField;
+        
+        private AdvantageAPISVC.Vendor[] ResultsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsSuccessful
+        {
+            get
+            {
+                return this.IsSuccessfulField;
+            }
+            set
+            {
+                this.IsSuccessfulField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message
+        {
+            get
+            {
+                return this.MessageField;
+            }
+            set
+            {
+                this.MessageField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AdvantageAPISVC.Vendor[] Results
+        {
+            get
+            {
+                return this.ResultsField;
+            }
+            set
+            {
+                this.ResultsField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="VendorHist", Namespace="http://schemas.datacontract.org/2004/07/AdvantageAPI")]
+    public partial class VendorHist : object
+    {
+        
+        private string AccountNumberField;
+        
+        private System.Nullable<short> ActiveFlagField;
+        
+        private string BankCodeField;
+        
+        private string CityField;
+        
+        private string CodeField;
+        
+        private string CountryField;
+        
+        private string CountyField;
+        
+        private string DefaultVendorContactCodeField;
+        
+        private string DefaultVendorRepresentativeCode1Field;
+        
+        private string DefaultVendorRepresentativeCode2Field;
+        
+        private string EmailAddressField;
+        
+        private string FaxPhoneNumberField;
+        
+        private string FaxPhoneNumberExtensionField;
+        
+        private System.Nullable<bool> HasSpecialTermsField;
+        
+        private string NameField;
+        
+        private string PayToAddressLine1Field;
+        
+        private string PayToAddressLine2Field;
+        
+        private string PayToCityField;
+        
+        private string PayToCodeField;
+        
+        private string PayToCountryField;
+        
+        private string PayToCountyField;
+        
+        private string PayToFaxPhoneNumberField;
+        
+        private string PayToFaxPhoneNumberExtensionField;
+        
+        private string PayToNameField;
+        
+        private string PayToPhoneNumberField;
+        
+        private string PayToPhoneNumberExtensionField;
+        
+        private string PayToStateField;
+        
+        private string PayToStreetAddressLine3Field;
+        
+        private string PayToZipCodeField;
+        
+        private string PaymentManagerEmailAddressField;
+        
+        private string PhoneNumberField;
+        
+        private string PhoneNumberExtensionField;
+        
+        private string StateField;
+        
+        private string StreetAddressLine1Field;
+        
+        private string StreetAddressLine2Field;
+        
+        private string StreetAddressLine3Field;
+        
+        private string TaxIDField;
+        
+        private string UpdateDateTimeField;
+        
+        private string UpdateIndicatorField;
+        
+        private System.Nullable<short> VCCStatusField;
+        
+        private string VendorCategoryField;
+        
+        private string VendorTermCodeField;
+        
+        private string WebsiteField;
+        
+        private string ZipCodeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AccountNumber
+        {
+            get
+            {
+                return this.AccountNumberField;
+            }
+            set
+            {
+                this.AccountNumberField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<short> ActiveFlag
+        {
+            get
+            {
+                return this.ActiveFlagField;
+            }
+            set
+            {
+                this.ActiveFlagField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BankCode
+        {
+            get
+            {
+                return this.BankCodeField;
+            }
+            set
+            {
+                this.BankCodeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string City
+        {
+            get
+            {
+                return this.CityField;
+            }
+            set
+            {
+                this.CityField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Code
+        {
+            get
+            {
+                return this.CodeField;
+            }
+            set
+            {
+                this.CodeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Country
+        {
+            get
+            {
+                return this.CountryField;
+            }
+            set
+            {
+                this.CountryField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string County
+        {
+            get
+            {
+                return this.CountyField;
+            }
+            set
+            {
+                this.CountyField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DefaultVendorContactCode
+        {
+            get
+            {
+                return this.DefaultVendorContactCodeField;
+            }
+            set
+            {
+                this.DefaultVendorContactCodeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DefaultVendorRepresentativeCode1
+        {
+            get
+            {
+                return this.DefaultVendorRepresentativeCode1Field;
+            }
+            set
+            {
+                this.DefaultVendorRepresentativeCode1Field = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DefaultVendorRepresentativeCode2
+        {
+            get
+            {
+                return this.DefaultVendorRepresentativeCode2Field;
+            }
+            set
+            {
+                this.DefaultVendorRepresentativeCode2Field = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EmailAddress
+        {
+            get
+            {
+                return this.EmailAddressField;
+            }
+            set
+            {
+                this.EmailAddressField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FaxPhoneNumber
+        {
+            get
+            {
+                return this.FaxPhoneNumberField;
+            }
+            set
+            {
+                this.FaxPhoneNumberField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FaxPhoneNumberExtension
+        {
+            get
+            {
+                return this.FaxPhoneNumberExtensionField;
+            }
+            set
+            {
+                this.FaxPhoneNumberExtensionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> HasSpecialTerms
+        {
+            get
+            {
+                return this.HasSpecialTermsField;
+            }
+            set
+            {
+                this.HasSpecialTermsField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name
+        {
+            get
+            {
+                return this.NameField;
+            }
+            set
+            {
+                this.NameField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToAddressLine1
+        {
+            get
+            {
+                return this.PayToAddressLine1Field;
+            }
+            set
+            {
+                this.PayToAddressLine1Field = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToAddressLine2
+        {
+            get
+            {
+                return this.PayToAddressLine2Field;
+            }
+            set
+            {
+                this.PayToAddressLine2Field = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToCity
+        {
+            get
+            {
+                return this.PayToCityField;
+            }
+            set
+            {
+                this.PayToCityField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToCode
+        {
+            get
+            {
+                return this.PayToCodeField;
+            }
+            set
+            {
+                this.PayToCodeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToCountry
+        {
+            get
+            {
+                return this.PayToCountryField;
+            }
+            set
+            {
+                this.PayToCountryField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToCounty
+        {
+            get
+            {
+                return this.PayToCountyField;
+            }
+            set
+            {
+                this.PayToCountyField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToFaxPhoneNumber
+        {
+            get
+            {
+                return this.PayToFaxPhoneNumberField;
+            }
+            set
+            {
+                this.PayToFaxPhoneNumberField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToFaxPhoneNumberExtension
+        {
+            get
+            {
+                return this.PayToFaxPhoneNumberExtensionField;
+            }
+            set
+            {
+                this.PayToFaxPhoneNumberExtensionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToName
+        {
+            get
+            {
+                return this.PayToNameField;
+            }
+            set
+            {
+                this.PayToNameField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToPhoneNumber
+        {
+            get
+            {
+                return this.PayToPhoneNumberField;
+            }
+            set
+            {
+                this.PayToPhoneNumberField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToPhoneNumberExtension
+        {
+            get
+            {
+                return this.PayToPhoneNumberExtensionField;
+            }
+            set
+            {
+                this.PayToPhoneNumberExtensionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToState
+        {
+            get
+            {
+                return this.PayToStateField;
+            }
+            set
+            {
+                this.PayToStateField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToStreetAddressLine3
+        {
+            get
+            {
+                return this.PayToStreetAddressLine3Field;
+            }
+            set
+            {
+                this.PayToStreetAddressLine3Field = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayToZipCode
+        {
+            get
+            {
+                return this.PayToZipCodeField;
+            }
+            set
+            {
+                this.PayToZipCodeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PaymentManagerEmailAddress
+        {
+            get
+            {
+                return this.PaymentManagerEmailAddressField;
+            }
+            set
+            {
+                this.PaymentManagerEmailAddressField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PhoneNumber
+        {
+            get
+            {
+                return this.PhoneNumberField;
+            }
+            set
+            {
+                this.PhoneNumberField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PhoneNumberExtension
+        {
+            get
+            {
+                return this.PhoneNumberExtensionField;
+            }
+            set
+            {
+                this.PhoneNumberExtensionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string State
+        {
+            get
+            {
+                return this.StateField;
+            }
+            set
+            {
+                this.StateField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StreetAddressLine1
+        {
+            get
+            {
+                return this.StreetAddressLine1Field;
+            }
+            set
+            {
+                this.StreetAddressLine1Field = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StreetAddressLine2
+        {
+            get
+            {
+                return this.StreetAddressLine2Field;
+            }
+            set
+            {
+                this.StreetAddressLine2Field = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StreetAddressLine3
+        {
+            get
+            {
+                return this.StreetAddressLine3Field;
+            }
+            set
+            {
+                this.StreetAddressLine3Field = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TaxID
+        {
+            get
+            {
+                return this.TaxIDField;
+            }
+            set
+            {
+                this.TaxIDField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UpdateDateTime
+        {
+            get
+            {
+                return this.UpdateDateTimeField;
+            }
+            set
+            {
+                this.UpdateDateTimeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UpdateIndicator
+        {
+            get
+            {
+                return this.UpdateIndicatorField;
+            }
+            set
+            {
+                this.UpdateIndicatorField = value;
             }
         }
         
@@ -7104,6 +8128,8 @@ namespace AdvantageAPISVC
         
         private int IsOpenField;
         
+        private System.Nullable<decimal> JobComponentBudgetField;
+        
         private string JobComponentCommentsField;
         
         private string JobComponentDescriptionField;
@@ -7324,6 +8350,19 @@ namespace AdvantageAPISVC
             set
             {
                 this.IsOpenField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> JobComponentBudget
+        {
+            get
+            {
+                return this.JobComponentBudgetField;
+            }
+            set
+            {
+                this.JobComponentBudgetField = value;
             }
         }
         
@@ -8525,6 +9564,8 @@ namespace AdvantageAPISVC
         
         private System.Nullable<System.DateTime> InvoiceDateToPayField;
         
+        private string InvoiceDescriptionField;
+        
         private string InvoiceNumberField;
         
         private System.Nullable<short> PaymentStatusField;
@@ -8612,6 +9653,19 @@ namespace AdvantageAPISVC
             set
             {
                 this.InvoiceDateToPayField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvoiceDescription
+        {
+            get
+            {
+                return this.InvoiceDescriptionField;
+            }
+            set
+            {
+                this.InvoiceDescriptionField = value;
             }
         }
         
@@ -10053,7 +11107,9 @@ namespace AdvantageAPISVC
                     int NonBillFlag, 
                     string MediaDateToBill, 
                     int JobProcessContrl, 
-                    string JobComponentComment);
+                    string JobComponentComment, 
+                    decimal JobComponentBudget, 
+                    int JobTaxFlag);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/AddOrUpdateEstimate", ReplyAction="http://tempuri.org/IAPIService/AddOrUpdateEstimateResponse")]
         System.Threading.Tasks.Task<AdvantageAPISVC.AddOrUpdateEstimateResponse> AddOrUpdateEstimateAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, int JobNumber, short JobComponentNumber, short CreateRevision, short AutoApprove, string ClientDiscountCode, AdvantageAPISVC.EstimateRevisionDetail[] EstimateRevisionDetails);
@@ -10120,7 +11176,7 @@ namespace AdvantageAPISVC
         System.Threading.Tasks.Task<AdvantageAPISVC.ClientTypeResponse> AddOrUpdateClientTypeAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, int ClientTypeInd, string ClientTypeDesc, bool InactiveFlag);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/AddCampaign", ReplyAction="http://tempuri.org/IAPIService/AddCampaignResponse")]
-        System.Threading.Tasks.Task<AdvantageAPISVC.AddCampaignResponse> AddCampaignAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, string ClientCode, string DivisionCode, string ProductCode, string CampaignCode, string CampaignName, System.DateTime StartDate, System.DateTime EndDate);
+        System.Threading.Tasks.Task<AdvantageAPISVC.AddCampaignResponse> AddCampaignAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, string ClientCode, string DivisionCode, string ProductCode, string CampaignCode, string CampaignName, string StartDate, string EndDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/CreateJob", ReplyAction="http://tempuri.org/IAPIService/CreateJobResponse")]
         System.Threading.Tasks.Task<AdvantageAPISVC.CreateJobResponse> CreateJobAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, string ClientCode, string DivisionCode, string ProductCode, string JobDescription, string JobComment, string BillingComment, string SalesClassCode, int CampaignID);
@@ -10207,7 +11263,9 @@ namespace AdvantageAPISVC
                     int JobProcessControl, 
                     string JobType, 
                     int NonBillFlag, 
-                    string MediaDateToBill);
+                    string MediaDateToBill, 
+                    decimal JobComponentBudget, 
+                    int JobTaxFlag);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/CopyJobComponent", ReplyAction="http://tempuri.org/IAPIService/CopyJobComponentResponse")]
         System.Threading.Tasks.Task<AdvantageAPISVC.CreateJobResponse> CopyJobComponentAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, int CopyFromJobNumber, short CopyFromJobComponentNumber, string JobComponentDescription, string AccountExecutiveEmployeeCode, string JobTypeCode, string AlertGroupCode, string JobComponentComment, bool CreateSchedule, System.DateTime JobDueDate, string ScheduleStatusCode);
@@ -10229,6 +11287,9 @@ namespace AdvantageAPISVC
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadSalesClasses", ReplyAction="http://tempuri.org/IAPIService/LoadSalesClassesResponse")]
         System.Threading.Tasks.Task<AdvantageAPISVC.SalesClass[]> LoadSalesClassesAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadSalesClasses2", ReplyAction="http://tempuri.org/IAPIService/LoadSalesClasses2Response")]
+        System.Threading.Tasks.Task<AdvantageAPISVC.SalesClassAPIResponse> LoadSalesClasses2Async(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadAccountExecutives", ReplyAction="http://tempuri.org/IAPIService/LoadAccountExecutivesResponse")]
         System.Threading.Tasks.Task<AdvantageAPISVC.AccountExecutive[]> LoadAccountExecutivesAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive);
@@ -10354,6 +11415,9 @@ namespace AdvantageAPISVC
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadCampaigns", ReplyAction="http://tempuri.org/IAPIService/LoadCampaignsResponse")]
         System.Threading.Tasks.Task<AdvantageAPISVC.Campaign[]> LoadCampaignsAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadClosed);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadCampaigns2", ReplyAction="http://tempuri.org/IAPIService/LoadCampaigns2Response")]
+        System.Threading.Tasks.Task<AdvantageAPISVC.CampaignAPIResponse> LoadCampaigns2Async(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadClosed);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadVendorTerms", ReplyAction="http://tempuri.org/IAPIService/LoadVendorTermsResponse")]
         System.Threading.Tasks.Task<AdvantageAPISVC.VendorTerm[]> LoadVendorTermsAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive);
         
@@ -10384,14 +11448,29 @@ namespace AdvantageAPISVC
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadClients", ReplyAction="http://tempuri.org/IAPIService/LoadClientsResponse")]
         System.Threading.Tasks.Task<AdvantageAPISVC.Client[]> LoadClientsAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadClients2", ReplyAction="http://tempuri.org/IAPIService/LoadClients2Response")]
+        System.Threading.Tasks.Task<AdvantageAPISVC.ClientAPIResponse> LoadClients2Async(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadDivisions", ReplyAction="http://tempuri.org/IAPIService/LoadDivisionsResponse")]
         System.Threading.Tasks.Task<AdvantageAPISVC.Division[]> LoadDivisionsAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadDivisions2", ReplyAction="http://tempuri.org/IAPIService/LoadDivisions2Response")]
+        System.Threading.Tasks.Task<AdvantageAPISVC.DivisionAPIResponse> LoadDivisions2Async(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadProducts", ReplyAction="http://tempuri.org/IAPIService/LoadProductsResponse")]
         System.Threading.Tasks.Task<AdvantageAPISVC.Product[]> LoadProductsAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadProducts2", ReplyAction="http://tempuri.org/IAPIService/LoadProducts2Response")]
+        System.Threading.Tasks.Task<AdvantageAPISVC.ProductAPIResponse> LoadProducts2Async(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadVendors", ReplyAction="http://tempuri.org/IAPIService/LoadVendorsResponse")]
         System.Threading.Tasks.Task<AdvantageAPISVC.Vendor[]> LoadVendorsAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive, string Categories);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadVendors2", ReplyAction="http://tempuri.org/IAPIService/LoadVendors2Response")]
+        System.Threading.Tasks.Task<AdvantageAPISVC.VendorAPIResponse> LoadVendors2Async(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive, string Categories);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadVendorsHistory", ReplyAction="http://tempuri.org/IAPIService/LoadVendorsHistoryResponse")]
+        System.Threading.Tasks.Task<AdvantageAPISVC.VendorHist[]> LoadVendorsHistoryAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive, string Categories, string FromDate, string ToDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAPIService/LoadVendorContacts", ReplyAction="http://tempuri.org/IAPIService/LoadVendorContactsResponse")]
         System.Threading.Tasks.Task<AdvantageAPISVC.VendorContact[]> LoadVendorContactsAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive);
@@ -10769,9 +11848,11 @@ namespace AdvantageAPISVC
                     int NonBillFlag, 
                     string MediaDateToBill, 
                     int JobProcessContrl, 
-                    string JobComponentComment)
+                    string JobComponentComment, 
+                    decimal JobComponentBudget, 
+                    int JobTaxFlag)
         {
-            return base.Channel.AddJobAndComponentAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, JobClientReference, JobNumber, ClientCode, DivisionCode, ProductCode, SalesClassCode, JobDescription, JobComment, AccountExecutive, JobComponentDescription, CampaignId, DueDate, JobTypeCode, ClientDiscountCode, BillingCoopCode, NonBillFlag, MediaDateToBill, JobProcessContrl, JobComponentComment);
+            return base.Channel.AddJobAndComponentAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, JobClientReference, JobNumber, ClientCode, DivisionCode, ProductCode, SalesClassCode, JobDescription, JobComment, AccountExecutive, JobComponentDescription, CampaignId, DueDate, JobTypeCode, ClientDiscountCode, BillingCoopCode, NonBillFlag, MediaDateToBill, JobProcessContrl, JobComponentComment, JobComponentBudget, JobTaxFlag);
         }
         
         public System.Threading.Tasks.Task<AdvantageAPISVC.AddOrUpdateEstimateResponse> AddOrUpdateEstimateAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, int JobNumber, short JobComponentNumber, short CreateRevision, short AutoApprove, string ClientDiscountCode, AdvantageAPISVC.EstimateRevisionDetail[] EstimateRevisionDetails)
@@ -10846,7 +11927,7 @@ namespace AdvantageAPISVC
             return base.Channel.AddOrUpdateClientTypeAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, ClientTypeInd, ClientTypeDesc, InactiveFlag);
         }
         
-        public System.Threading.Tasks.Task<AdvantageAPISVC.AddCampaignResponse> AddCampaignAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, string ClientCode, string DivisionCode, string ProductCode, string CampaignCode, string CampaignName, System.DateTime StartDate, System.DateTime EndDate)
+        public System.Threading.Tasks.Task<AdvantageAPISVC.AddCampaignResponse> AddCampaignAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, string ClientCode, string DivisionCode, string ProductCode, string CampaignCode, string CampaignName, string StartDate, string EndDate)
         {
             return base.Channel.AddCampaignAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, ClientCode, DivisionCode, ProductCode, CampaignCode, CampaignName, StartDate, EndDate);
         }
@@ -10949,9 +12030,11 @@ namespace AdvantageAPISVC
                     int JobProcessControl, 
                     string JobType, 
                     int NonBillFlag, 
-                    string MediaDateToBill)
+                    string MediaDateToBill, 
+                    decimal JobComponentBudget, 
+                    int JobTaxFlag)
         {
-            return base.Channel.UpdateJobAndComponentAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, JobNumber, JobComponentNumber, JobDescription, JobComments, JobComponentDescription, JobComponentComments, JobClientReference, JobProcessControl, JobType, NonBillFlag, MediaDateToBill);
+            return base.Channel.UpdateJobAndComponentAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, JobNumber, JobComponentNumber, JobDescription, JobComments, JobComponentDescription, JobComponentComments, JobClientReference, JobProcessControl, JobType, NonBillFlag, MediaDateToBill, JobComponentBudget, JobTaxFlag);
         }
         
         public System.Threading.Tasks.Task<AdvantageAPISVC.CreateJobResponse> CopyJobComponentAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, int CopyFromJobNumber, short CopyFromJobComponentNumber, string JobComponentDescription, string AccountExecutiveEmployeeCode, string JobTypeCode, string AlertGroupCode, string JobComponentComment, bool CreateSchedule, System.DateTime JobDueDate, string ScheduleStatusCode)
@@ -10987,6 +12070,11 @@ namespace AdvantageAPISVC
         public System.Threading.Tasks.Task<AdvantageAPISVC.SalesClass[]> LoadSalesClassesAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive)
         {
             return base.Channel.LoadSalesClassesAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadInactive);
+        }
+        
+        public System.Threading.Tasks.Task<AdvantageAPISVC.SalesClassAPIResponse> LoadSalesClasses2Async(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive)
+        {
+            return base.Channel.LoadSalesClasses2Async(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadInactive);
         }
         
         public System.Threading.Tasks.Task<AdvantageAPISVC.AccountExecutive[]> LoadAccountExecutivesAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive)
@@ -11137,6 +12225,11 @@ namespace AdvantageAPISVC
             return base.Channel.LoadCampaignsAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadClosed);
         }
         
+        public System.Threading.Tasks.Task<AdvantageAPISVC.CampaignAPIResponse> LoadCampaigns2Async(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadClosed)
+        {
+            return base.Channel.LoadCampaigns2Async(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadClosed);
+        }
+        
         public System.Threading.Tasks.Task<AdvantageAPISVC.VendorTerm[]> LoadVendorTermsAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive)
         {
             return base.Channel.LoadVendorTermsAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadInactive);
@@ -11187,9 +12280,19 @@ namespace AdvantageAPISVC
             return base.Channel.LoadClientsAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadInactive);
         }
         
+        public System.Threading.Tasks.Task<AdvantageAPISVC.ClientAPIResponse> LoadClients2Async(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive)
+        {
+            return base.Channel.LoadClients2Async(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadInactive);
+        }
+        
         public System.Threading.Tasks.Task<AdvantageAPISVC.Division[]> LoadDivisionsAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive)
         {
             return base.Channel.LoadDivisionsAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadInactive);
+        }
+        
+        public System.Threading.Tasks.Task<AdvantageAPISVC.DivisionAPIResponse> LoadDivisions2Async(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive)
+        {
+            return base.Channel.LoadDivisions2Async(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadInactive);
         }
         
         public System.Threading.Tasks.Task<AdvantageAPISVC.Product[]> LoadProductsAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive)
@@ -11197,9 +12300,24 @@ namespace AdvantageAPISVC
             return base.Channel.LoadProductsAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadInactive);
         }
         
+        public System.Threading.Tasks.Task<AdvantageAPISVC.ProductAPIResponse> LoadProducts2Async(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive)
+        {
+            return base.Channel.LoadProducts2Async(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadInactive);
+        }
+        
         public System.Threading.Tasks.Task<AdvantageAPISVC.Vendor[]> LoadVendorsAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive, string Categories)
         {
             return base.Channel.LoadVendorsAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadInactive, Categories);
+        }
+        
+        public System.Threading.Tasks.Task<AdvantageAPISVC.VendorAPIResponse> LoadVendors2Async(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive, string Categories)
+        {
+            return base.Channel.LoadVendors2Async(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadInactive, Categories);
+        }
+        
+        public System.Threading.Tasks.Task<AdvantageAPISVC.VendorHist[]> LoadVendorsHistoryAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive, string Categories, string FromDate, string ToDate)
+        {
+            return base.Channel.LoadVendorsHistoryAsync(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, LoadInactive, Categories, FromDate, ToDate);
         }
         
         public System.Threading.Tasks.Task<AdvantageAPISVC.VendorContact[]> LoadVendorContactsAsync(string ServerName, string DatabaseName, int UseWindowsAuthentication, string UserName, string Password, bool LoadInactive)
@@ -11354,12 +12472,10 @@ namespace AdvantageAPISVC
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
-                result.MaxBufferPoolSize = 10240000;
                 result.ReaderQuotas = System.Xml.XmlDictionaryReaderQuotas.Max;
                 result.MaxReceivedMessageSize = int.MaxValue;
                 result.AllowCookies = true;
                 result.Security.Mode = System.ServiceModel.BasicHttpSecurityMode.Transport;
-                result.SendTimeout = System.TimeSpan.FromMinutes(30);
                 return result;
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
