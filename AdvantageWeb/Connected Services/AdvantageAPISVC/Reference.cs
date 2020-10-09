@@ -1306,6 +1306,8 @@ namespace AdvantageAPISVC
         
         private System.Nullable<decimal> AdditionalChargeAmountField;
         
+        private string AutoCreateUnitTypeField;
+        
         private System.Nullable<decimal> BillAmountField;
         
         private string BillCoopCodeField;
@@ -1641,6 +1643,19 @@ namespace AdvantageAPISVC
             set
             {
                 this.AdditionalChargeAmountField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AutoCreateUnitType
+        {
+            get
+            {
+                return this.AutoCreateUnitTypeField;
+            }
+            set
+            {
+                this.AutoCreateUnitTypeField = value;
             }
         }
         
