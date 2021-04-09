@@ -8,10 +8,13 @@ namespace AdvantageWeb.Pages.Data
         public Task Task { get; set; }
         public DateTime StartTime { get; }
 
+        public string Extra { get; set; }
+
         public DataTask(Task _task)
         {
             this.Task = _task;
             this.StartTime = DateTime.Now;
+            this.Extra = "";
         }
     }
 }

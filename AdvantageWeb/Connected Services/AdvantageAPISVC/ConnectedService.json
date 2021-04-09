@@ -6,7 +6,7 @@
   },
   "ExtendedData": {
     "inputs": [
-      "https://www.advantagehosted.com/api/apiservice.svc"
+      "https://www.advantagehosted.com/apitest/apiservice.svc"
     ],
     "collectionTypes": [
       "System.Array",

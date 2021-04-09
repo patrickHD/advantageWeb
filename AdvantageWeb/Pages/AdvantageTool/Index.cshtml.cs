@@ -97,12 +97,26 @@ namespace AdvantageWeb.Pages.Data
             if (USData)
             {
                 MediaOrder[] trumd = await Client.LoadMediaOrdersAsync(ServerName, DatabaseName, 0, UserName, Password, OrderStatus, StartDate, StartMonth, StartYear, EndDate, EndMonth, EndYear, IncludeInternet, IncludeMagazine, IncludeNewspaper, IncludeOutOfHome, IncludeRadio, IncludeTV, OrderNumbers);
-                usStr = MakeCSV(trumd, Columns, RemoveDuplicates);
+                if(trumd.Length == 0)
+                {
+                    DataTasks[filename].Extra += "No US entries found ";
+                }
+                else
+                {
+                    usStr = MakeCSV(trumd, Columns, RemoveDuplicates);
+                }
             }
             if (CAData)
             {
                 MediaOrder[] truca = await Client.LoadMediaOrdersAsync(ServerName, DatabaseNameCA, 0, UserName, Password, OrderStatus, StartDate, StartMonth, StartYear, EndDate, EndMonth, EndYear, IncludeInternet, IncludeMagazine, IncludeNewspaper, IncludeOutOfHome, IncludeRadio, IncludeTV, OrderNumbers);
-                caStr = MakeCSV(truca, Columns, RemoveDuplicates);
+                if(truca.Length == 0)
+                {
+                    DataTasks[filename].Extra += "No CA entries found ";
+                }
+                else
+                {
+                    caStr = MakeCSV(truca, Columns, RemoveDuplicates);
+                }
             }
             if (USData && !CAData)
             {
@@ -121,11 +135,13 @@ namespace AdvantageWeb.Pages.Data
                 {
                     using (Stream zipStream = archive.CreateEntry("USData.csv", CompressionLevel.Fastest).Open())
                     {
-                        zipStream.Write(usStr, 0, usStr.Length);
+                        if(usStr != null)
+                            zipStream.Write(usStr, 0, usStr.Length);
                     }
                     using (Stream zipStream = archive.CreateEntry("CAData.csv", CompressionLevel.Fastest).Open())
                     {
-                        zipStream.Write(caStr, 0, caStr.Length);
+                        if(caStr != null)
+                            zipStream.Write(caStr, 0, caStr.Length);
                     }
                 }
                 string path = Path.Combine(_env.WebRootPath + "/fileResults", filename);
@@ -145,7 +161,7 @@ namespace AdvantageWeb.Pages.Data
             string taskError = null;
             try
             {
-                taskStatus = " | Status: " + DataTasks[id].Task.Status.ToString();
+                taskStatus = " | --"+ DataTasks[id].Extra + "-- | Status: " + DataTasks[id].Task.Status.ToString();
                 taskTime = " | Elapsed Time: " + (DateTime.Now - DataTasks[id].StartTime).ToString().Split(".")[0];
             }
             catch (Exception e)
@@ -171,7 +187,7 @@ namespace AdvantageWeb.Pages.Data
             var delimiter = ',';
             using (var sw = new StringWriter())
             {
-                var properties = items[0].GetType().GetProperties().ToList();
+                var properties = items.First().GetType().GetProperties().ToList();
 
                 if (Columns != null)
                 {

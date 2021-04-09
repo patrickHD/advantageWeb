@@ -42,7 +42,7 @@ namespace AdvantageWeb
             {
                 options.CallbackPath = "/signin-google";
                 options.CorrelationCookie.SameSite = SameSiteMode.Lax;
-                options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                //options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                 options.SaveTokens = true;
                 IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
                 options.ClientId = googleAuthNSection["ClientId"];

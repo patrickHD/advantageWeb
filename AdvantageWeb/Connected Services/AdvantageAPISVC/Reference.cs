@@ -12500,7 +12500,7 @@ namespace AdvantageAPISVC
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IAPIService))
             {
-                return new System.ServiceModel.EndpointAddress("https://www.advantagehosted.com/api/apiservice.svc/SOAP");
+                return new System.ServiceModel.EndpointAddress("https://www.advantagehosted.com/apitest/apiservice.svc/SOAP");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
